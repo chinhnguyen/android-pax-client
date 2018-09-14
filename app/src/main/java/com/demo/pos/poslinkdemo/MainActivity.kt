@@ -1,12 +1,19 @@
 package com.demo.pos.poslinkdemo
 
-import android.support.v7.app.AppCompatActivity
-import android.os.Bundle
+import adapters.MainPagerAdapter
+import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+    lateinit var pagerAdapter: MainPagerAdapter
+
+    override fun getLayoutResourceId(): Int {
+        return R.layout.activity_main
+    }
+
+    override fun initView() {
+        pagerAdapter = MainPagerAdapter(supportFragmentManager)
+        vp_main_pager.adapter = pagerAdapter
+        main_tab.setupWithViewPager(vp_main_pager)
     }
 }
