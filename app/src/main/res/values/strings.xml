@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">POSLinkDemo</string>
+    <string name="submit">Submit</string>
+    <string name="input_pax_s_ip_address">Input Pax\'s IP address</string>
+    <string name="test_connection">Test Connection</string>
+    <string name="connect_success">Connect success</string>
+    <string name="connect_failed">Connect failed</string>
 </resources>
