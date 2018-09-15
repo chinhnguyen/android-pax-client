@@ -1,7 +1,7 @@
 package com.demo.pos.poslinkdemo.activities
 
-import com.demo.pos.poslinkdemo.adapters.MainPagerAdapter
 import com.demo.pos.poslinkdemo.R
+import com.demo.pos.poslinkdemo.adapters.MainPagerAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity() {

@@ -5,5 +5,6 @@ import android.content.Context
 interface IBaseView {
     fun showLoading()
     fun hideLoading()
-    fun getContext(): Context
+    fun onError(message: String?)
+    fun getViewContext(): Context?
 }
