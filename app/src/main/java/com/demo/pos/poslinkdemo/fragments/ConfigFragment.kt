@@ -1,4 +1,4 @@
-package fragments
+package com.demo.pos.poslinkdemo.fragments
 
 import com.demo.pos.poslinkdemo.R
 

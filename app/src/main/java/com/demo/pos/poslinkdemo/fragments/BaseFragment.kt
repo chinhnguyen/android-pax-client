@@ -1,4 +1,4 @@
-package fragments
+package com.demo.pos.poslinkdemo.fragments
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -17,4 +17,5 @@ abstract class BaseFragment : Fragment() {
     }
 
     abstract fun getLayoutResourceId(): Int
+
 }

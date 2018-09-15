@@ -1,4 +1,4 @@
-package com.demo.pos.poslinkdemo
+package com.demo.pos.poslinkdemo.activities
 
 import android.os.Bundle
 import android.os.PersistableBundle
