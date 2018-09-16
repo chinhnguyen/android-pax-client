@@ -10,15 +10,16 @@ import io.reactivex.Observable
 abstract class IBasePresenter<V>(protected var view: V) where V : IBaseView {
 
     protected fun createPosLinkObject(): PosLink {
-        return POSLinkCreator.createPoslink(getContext())
+        val posLink = POSLinkCreator.createPoslink(getContext())
+        posLink.appDataFolder = getAppDataFolder()
+        posLink.SetCommSetting(PosLinkConfiguration.createComSetting())
+        return posLink
     }
 
     protected fun createPosLinkObservable(): Observable<PosLink> {
         return Observable.create<PosLink> {
-            val posLink = POSLinkCreator.createPoslink(getContext())
-            posLink.appDataFolder = getAppDataFolder()
-            posLink.SetCommSetting(PosLinkConfiguration.createComSetting())
-            it.onNext(posLink)
+            it.onNext(createPosLinkObject())
+            it.onComplete()
         }
     }
 
@@ -59,4 +60,5 @@ abstract class IBasePresenter<V>(protected var view: V) where V : IBaseView {
     private fun getContext(): Context? {
         return view.getViewContext()
     }
+
 }

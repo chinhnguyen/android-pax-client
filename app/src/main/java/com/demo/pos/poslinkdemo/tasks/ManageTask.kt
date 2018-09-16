@@ -5,11 +5,15 @@ import io.reactivex.Observable
 
 object ManageTask {
 
+    fun createManageRequestObject(tranType: String): ManageRequest {
+        val manageRequest = ManageRequest()
+        manageRequest.TransType = manageRequest.ParseTransType(tranType)
+        return manageRequest
+    }
+
     public fun createManageRequestObservable(tranType: String): Observable<ManageRequest> {
         return Observable.create<ManageRequest> {
-            val manageRequest = ManageRequest()
-            manageRequest.TransType = manageRequest.ParseTransType(tranType)
-            it.onNext(manageRequest)
+            it.onNext(createManageRequestObject(tranType))
             it.onComplete()
         }
     }

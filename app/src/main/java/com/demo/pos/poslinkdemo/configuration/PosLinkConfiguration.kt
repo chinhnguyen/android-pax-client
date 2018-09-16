@@ -7,6 +7,11 @@ object PosLinkConfiguration {
     const val DEFAULT_DEST_PORT = "10009"
 
     const val TRAN_TYPE_MANAGE_INIT = "INIT"
+    const val TRAN_TYPE_PAYMENT_SALE = "SALE"
+
+    const val TENDER_TYPE_PAYMENT = "CREDIT"
+
+    const val ERC_REF_PAYMENT = "1"
 
     const val COM_SETTING_HOST = "UNKNOWN"
     const val COM_SETTING_SERIAL_PORT = "COM1"

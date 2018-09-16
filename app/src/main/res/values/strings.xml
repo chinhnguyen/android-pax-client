@@ -5,4 +5,5 @@
     <string name="test_connection">Test Connection</string>
     <string name="connect_success">Connect success</string>
     <string name="connect_failed">Connect failed</string>
+    <string name="input_sale_amount">Input sale amount</string>
 </resources>
