@@ -7,7 +7,9 @@
     <string name="connect_failed">Connect failed</string>
     <string name="input_sale_amount">Input sale amount</string>
     <string name="input_refund_amount">Input refund amount</string>
+    <string name="input_tip_adjust_amount">Input tip amount</string>
+    <string name="input_orig_ref_number">Input orig ref number</string>
     <string name="submit_void">Void</string>
     <string name="refund">Refund</string>
-    <string name="input_orig_ref_number">Input orig ref number</string>
+    <string name="adjust">Adjust</string>
 </resources>

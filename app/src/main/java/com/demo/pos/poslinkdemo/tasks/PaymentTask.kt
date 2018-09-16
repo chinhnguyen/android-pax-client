@@ -44,6 +44,29 @@ object PaymentTask {
         }
     }
 
+    /**
+     * Create PaymentRequest with TransType = Refund
+     */
+    fun createPaymentAdjustRequestObject(tipAmount: String, origRefNum: String): PaymentRequest {
+        val paymentRequest = PaymentRequest()
+        paymentRequest.TenderType = paymentRequest.ParseTenderType(PosLinkConfiguration.TENDER_TYPE_PAYMENT)
+        paymentRequest.TransType = paymentRequest.ParseTransType(PosLinkConfiguration.TRAN_TYPE_PAYMENT_ADJUST)
+        paymentRequest.ECRRefNum = PosLinkConfiguration.ERC_REF_PAYMENT
+        paymentRequest.TipAmt = tipAmount
+        paymentRequest.OrigRefNum = origRefNum
+        return paymentRequest
+    }
+
+    fun createPaymentAdjustRequestObservable(tipAmount: String, origRefNum: String): Observable<PaymentRequest> {
+        return Observable.create<PaymentRequest> {
+            it.onNext(createPaymentAdjustRequestObject(tipAmount, origRefNum))
+            it.onComplete()
+        }
+    }
+
+    /**
+     * Create PaymentRequest with TransType = Refund
+     */
     fun createPaymentReturnRequestObject(amount: String): PaymentRequest {
         val paymentRequest = PaymentRequest()
         paymentRequest.TenderType = paymentRequest.ParseTenderType(PosLinkConfiguration.TENDER_TYPE_PAYMENT)

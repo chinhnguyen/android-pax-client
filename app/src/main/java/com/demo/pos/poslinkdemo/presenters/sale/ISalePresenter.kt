@@ -16,6 +16,10 @@ interface ISalePresenter {
 
         abstract fun callPaymentVoid(origRefNum: String)
 
+        abstract fun callPaymentAdjust(tipAmount: String, origRefNum: String)
+
         abstract fun callPaymentRefund(amount: String)
+
+
     }
 }
