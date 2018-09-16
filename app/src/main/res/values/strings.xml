@@ -15,4 +15,5 @@
     <string name="refund">Refund</string>
     <string name="adjust">Adjust</string>
     <string name="force">Force Auth</string>
+    <string name="close_batch">Close Batch</string>
 </resources>

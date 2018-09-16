@@ -12,7 +12,9 @@ object PosLinkConfiguration {
     const val TRAN_TYPE_PAYMENT_REFUND = "RETURN"
     const val TRAN_TYPE_PAYMENT_FORCEAUTH = "FORCEAUTH"
     const val TRAN_TYPE_PAYMENT_ADJUST = "ADJUST"
+    const val TRAN_TYPE_BATCH_CLOSE = "BATCHCLOSE"
 
+    const val EDC_TYPE_CREADIT = "CREDIT"
     const val TENDER_TYPE_PAYMENT = "CREDIT"
 
     const val ERC_REF_PAYMENT = "1"
