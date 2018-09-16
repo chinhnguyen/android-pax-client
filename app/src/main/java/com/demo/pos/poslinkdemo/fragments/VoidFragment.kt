@@ -17,7 +17,7 @@ class VoidFragment : BaseFragment<ISalePresenter.Presenter, ISalePresenter.ISale
 
     override fun setupViews() {
         bt_void.setOnClickListener {
-            presenter.callPaymentVoid()
+            presenter.callPaymentVoid(et_orig_ref_number.text.toString())
         }
     }
 

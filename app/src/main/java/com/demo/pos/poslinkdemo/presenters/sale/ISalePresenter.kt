@@ -5,15 +5,15 @@ import com.demo.pos.poslinkdemo.presenters.IBaseView
 
 interface ISalePresenter {
 
-    interface ISaleView: IBaseView {
+    interface ISaleView : IBaseView {
 
         fun onSaleSuccess()
     }
 
-    abstract class Presenter(view: ISaleView): IBasePresenter<ISaleView>(view) {
+    abstract class Presenter(view: ISaleView) : IBasePresenter<ISaleView>(view) {
 
         abstract fun callPaymentSale(amount: String)
 
-        abstract fun callPaymentVoid()
+        abstract fun callPaymentVoid(origRefNum: String)
     }
 }

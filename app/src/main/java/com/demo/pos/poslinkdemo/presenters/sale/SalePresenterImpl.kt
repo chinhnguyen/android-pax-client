@@ -21,9 +21,9 @@ class SalePresenterImpl(view: ISalePresenter.ISaleView) : ISalePresenter.Present
                 .subscribe({ view.onSaleSuccess() }, { view.onError(it.message) })
     }
 
-    override fun callPaymentVoid() {
+    override fun callPaymentVoid(origRefNum: String) {
         val disposable = createPosLinkObservable()
-                .zipWith(PaymentTask.createPaymentVoidRequestObservable(), BiFunction { posLink: PosLink, paymentRequest: PaymentRequest ->
+                .zipWith(PaymentTask.createPaymentVoidRequestObservable(origRefNum), BiFunction { posLink: PosLink, paymentRequest: PaymentRequest ->
                     posLink.PaymentRequest = paymentRequest
                     executePosLink(posLink)
                 })

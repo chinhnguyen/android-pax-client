@@ -5,7 +5,7 @@ import com.demo.pos.poslinkdemo.presenters.sale.ISalePresenter
 import com.demo.pos.poslinkdemo.presenters.sale.SalePresenterImpl
 import kotlinx.android.synthetic.main.fragment_sale.*
 
-class SaleFragment: BaseFragment<ISalePresenter.Presenter, ISalePresenter.ISaleView>(), ISalePresenter.ISaleView {
+class SaleFragment : BaseFragment<ISalePresenter.Presenter, ISalePresenter.ISaleView>(), ISalePresenter.ISaleView {
 
     override fun onSaleSuccess() {
         showToastMessage("Call Sale success")
@@ -14,7 +14,6 @@ class SaleFragment: BaseFragment<ISalePresenter.Presenter, ISalePresenter.ISaleV
     override fun initPresenter(): ISalePresenter.Presenter {
         return SalePresenterImpl(this)
     }
-
 
     override fun setupViews() {
         bt_sale_submit.setOnClickListener {

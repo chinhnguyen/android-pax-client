@@ -28,17 +28,18 @@ object PaymentTask {
     /**
      * Create PaymentRequest with TransType = Void
      */
-    fun createPaymentVoidRequestObject(): PaymentRequest {
+    fun createPaymentVoidRequestObject(origRefNum: String): PaymentRequest {
         val paymentRequest = PaymentRequest()
         paymentRequest.TenderType = paymentRequest.ParseTenderType(PosLinkConfiguration.TENDER_TYPE_PAYMENT)
         paymentRequest.TransType = paymentRequest.ParseTransType(PosLinkConfiguration.TRAN_TYPE_PAYMENT_VOID)
         paymentRequest.ECRRefNum = PosLinkConfiguration.ERC_REF_PAYMENT
+        paymentRequest.OrigRefNum = origRefNum
         return paymentRequest
     }
 
-    fun createPaymentVoidRequestObservable(): Observable<PaymentRequest> {
+    fun createPaymentVoidRequestObservable(origRefNum: String): Observable<PaymentRequest> {
         return Observable.create<PaymentRequest> {
-            it.onNext(createPaymentVoidRequestObject())
+            it.onNext(createPaymentVoidRequestObject(origRefNum))
             it.onComplete()
         }
     }
