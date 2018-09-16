@@ -13,5 +13,7 @@ interface ISalePresenter {
     abstract class Presenter(view: ISaleView): IBasePresenter<ISaleView>(view) {
 
         abstract fun callPaymentSale(amount: String)
+
+        abstract fun callPaymentVoid()
     }
 }

@@ -8,7 +8,7 @@ import kotlinx.android.synthetic.main.fragment_sale.*
 class SaleFragment: BaseFragment<ISalePresenter.Presenter, ISalePresenter.ISaleView>(), ISalePresenter.ISaleView {
 
     override fun onSaleSuccess() {
-        showToastMessage("Sale success")
+        showToastMessage("Call Sale success")
     }
 
     override fun initPresenter(): ISalePresenter.Presenter {
