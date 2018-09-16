@@ -10,6 +10,7 @@ object PosLinkConfiguration {
     const val TRAN_TYPE_PAYMENT_SALE = "SALE"
     const val TRAN_TYPE_PAYMENT_VOID = "VOID"
     const val TRAN_TYPE_PAYMENT_REFUND = "RETURN"
+    const val TRAN_TYPE_PAYMENT_FORCEAUTH = "FORCEAUTH"
     const val TRAN_TYPE_PAYMENT_ADJUST = "ADJUST"
 
     const val TENDER_TYPE_PAYMENT = "CREDIT"

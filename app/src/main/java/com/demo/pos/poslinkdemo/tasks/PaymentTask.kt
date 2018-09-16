@@ -45,7 +45,7 @@ object PaymentTask {
     }
 
     /**
-     * Create PaymentRequest with TransType = Refund
+     * Create PaymentRequest with TransType = Adjust
      */
     fun createPaymentAdjustRequestObject(tipAmount: String, origRefNum: String): PaymentRequest {
         val paymentRequest = PaymentRequest()
@@ -79,6 +79,26 @@ object PaymentTask {
     fun createPaymentReturnRequestObservable(amount: String): Observable<PaymentRequest> {
         return Observable.create<PaymentRequest> {
             it.onNext(createPaymentReturnRequestObject(amount))
+            it.onComplete()
+        }
+    }
+
+    /**
+     * Create PaymentRequest with TransType = ForceAuth
+     */
+    fun createPaymentForceAuthRequestObject(amount: String, authCode: String): PaymentRequest {
+        val paymentRequest = PaymentRequest()
+        paymentRequest.TenderType = paymentRequest.ParseTenderType(PosLinkConfiguration.TENDER_TYPE_PAYMENT)
+        paymentRequest.TransType = paymentRequest.ParseTransType(PosLinkConfiguration.TRAN_TYPE_PAYMENT_FORCEAUTH)
+        paymentRequest.ECRRefNum = PosLinkConfiguration.ERC_REF_PAYMENT
+        paymentRequest.Amount = amount
+        paymentRequest.AuthCode = authCode
+        return paymentRequest
+    }
+
+    fun createPaymentForceAuthRequestObservable(amount: String, authCode: String): Observable<PaymentRequest> {
+        return Observable.create<PaymentRequest> {
+            it.onNext(createPaymentForceAuthRequestObject(amount, authCode))
             it.onComplete()
         }
     }

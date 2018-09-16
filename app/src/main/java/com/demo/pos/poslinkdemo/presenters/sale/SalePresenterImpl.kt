@@ -68,4 +68,20 @@ class SalePresenterImpl(view: ISalePresenter.ISaleView) : ISalePresenter.Present
                     view.onError(it.message)
                 })
     }
+
+    override fun callPaymentForce(amount: String, authCode: String) {
+        createPosLinkObservable()
+                .zipWith(PaymentTask.createPaymentForceAuthRequestObservable(amount, authCode), BiFunction { posLink: PosLink, paymentRequest: PaymentRequest ->
+                    posLink.PaymentRequest = paymentRequest
+                    executePosLink(posLink)
+                })
+                .flatMap { executeTransResult(it) }
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    view.onSaleSuccess()
+                }, {
+                    view.onError(it.message)
+                })
+    }
 }
