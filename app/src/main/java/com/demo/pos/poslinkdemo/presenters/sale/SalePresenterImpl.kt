@@ -36,4 +36,20 @@ class SalePresenterImpl(view: ISalePresenter.ISaleView) : ISalePresenter.Present
                     view.onError(it.message)
                 })
     }
+
+    override fun callPaymentRefund(amount: String) {
+        val disposable = createPosLinkObservable()
+                .zipWith(PaymentTask.createPaymentReturnRequestObservable(amount), BiFunction { posLink: PosLink, paymentRequets: PaymentRequest ->
+                    posLink.PaymentRequest = paymentRequets
+                    executePosLink(posLink)
+                })
+                .flatMap { executeTransResult(it) }
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    view.onSaleSuccess()
+                }, {
+                    view.onError(it.message)
+                })
+    }
 }

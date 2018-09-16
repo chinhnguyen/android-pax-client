@@ -44,4 +44,20 @@ object PaymentTask {
         }
     }
 
+    fun createPaymentReturnRequestObject(amount: String): PaymentRequest {
+        val paymentRequest = PaymentRequest()
+        paymentRequest.TenderType = paymentRequest.ParseTenderType(PosLinkConfiguration.TENDER_TYPE_PAYMENT)
+        paymentRequest.TransType = paymentRequest.ParseTransType(PosLinkConfiguration.TRAN_TYPE_PAYMENT_REFUND)
+        paymentRequest.ECRRefNum = PosLinkConfiguration.ERC_REF_PAYMENT
+        paymentRequest.Amount = amount
+        return paymentRequest
+    }
+
+    fun createPaymentReturnRequestObservable(amount: String): Observable<PaymentRequest> {
+        return Observable.create<PaymentRequest> {
+            it.onNext(createPaymentReturnRequestObject(amount))
+            it.onComplete()
+        }
+    }
+
 }

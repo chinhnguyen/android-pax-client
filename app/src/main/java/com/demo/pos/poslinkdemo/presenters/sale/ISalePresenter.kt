@@ -15,5 +15,7 @@ interface ISalePresenter {
         abstract fun callPaymentSale(amount: String)
 
         abstract fun callPaymentVoid(origRefNum: String)
+
+        abstract fun callPaymentRefund(amount: String)
     }
 }
