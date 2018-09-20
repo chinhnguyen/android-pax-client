@@ -4,7 +4,7 @@ import com.demo.pos.poslinkdemo.configuration.PosLinkConfiguration
 import com.pax.poslink.PaymentRequest
 import io.reactivex.Observable
 
-object PaymentTask {
+object PaymentTask : BaseTask() {
 
     /**
      * Create PaymentRequest with TransType = Sale

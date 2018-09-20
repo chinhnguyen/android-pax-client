@@ -3,7 +3,7 @@ package com.demo.pos.poslinkdemo.tasks
 import com.pax.poslink.ManageRequest
 import io.reactivex.Observable
 
-object ManageTask {
+object ManageTask : BaseTask() {
 
     fun createManageRequestObject(tranType: String): ManageRequest {
         val manageRequest = ManageRequest()

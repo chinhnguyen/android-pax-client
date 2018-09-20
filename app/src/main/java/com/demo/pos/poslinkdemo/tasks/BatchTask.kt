@@ -4,7 +4,7 @@ import com.demo.pos.poslinkdemo.configuration.PosLinkConfiguration
 import com.pax.poslink.BatchRequest
 import io.reactivex.Observable
 
-object BatchTask {
+object BatchTask : BaseTask() {
 
     fun createBatchCloseRequestObject(): BatchRequest {
         val batchRequest = BatchRequest()
@@ -13,8 +13,8 @@ object BatchTask {
         return batchRequest
     }
 
-    fun createBatchCloseRequestObservable() :Observable<BatchRequest> {
-        return Observable.create<BatchRequest>{
+    fun createBatchCloseRequestObservable(): Observable<BatchRequest> {
+        return Observable.create<BatchRequest> {
             it.onNext(createBatchCloseRequestObject())
             it.onComplete()
         }
