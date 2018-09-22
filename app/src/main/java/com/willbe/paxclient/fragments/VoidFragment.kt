@@ -1,0 +1,25 @@
+package com.willbe.paxclient.fragments
+
+import com.demo.pos.poslinkdemo.R
+import com.willbe.paxclient.presenters.IBaseView
+import com.willbe.paxclient.presenters.sale.ISalePresenter
+import com.willbe.paxclient.presenters.sale.SalePresenterImpl
+import kotlinx.android.synthetic.main.fragment_void.*
+
+class VoidFragment : BaseFragment<ISalePresenter.Presenter, IBaseView>(), IBaseView {
+
+    override fun initPresenter(): ISalePresenter.Presenter {
+        return SalePresenterImpl(this)
+    }
+
+    override fun setupViews() {
+        bt_void.setOnClickListener {
+            presenter.callPaymentVoid(et_orig_ref_number.text.toString())
+        }
+    }
+
+    override fun getLayoutResourceId(): Int {
+        return R.layout.fragment_void
+    }
+
+}
