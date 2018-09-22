@@ -1,6 +1,6 @@
 package com.willbe.paxclient.presenters.sale
 
-import com.willbe.paxclient.presenters.IBaseView
+import com.willbe.paxclient.IBaseView
 
 class SalePresenterImpl(view: IBaseView) : ISalePresenter.Presenter(view) {
 

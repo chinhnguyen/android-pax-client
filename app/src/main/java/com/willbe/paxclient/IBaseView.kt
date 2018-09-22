@@ -1,14 +1,15 @@
-package com.willbe.paxclient.presenters
+package com.willbe.paxclient
 
 import android.content.Context
+import com.willbe.paxclient.services.CCResult
 
 /**
  * Common interface for all views to implement the MVP pattern.
  */
 interface IBaseView {
-    fun showLoading()
+    fun showLoading(message: String)
     fun hideLoading()
-    fun onSuccess()
+    fun onSuccess(result: CCResult)
+    fun onProgress(message: String)
     fun onError(message: String?)
-    fun getViewContext(): Context?
 }

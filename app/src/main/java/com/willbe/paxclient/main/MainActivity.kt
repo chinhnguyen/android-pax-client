@@ -1,7 +1,7 @@
-package com.willbe.paxclient.activities
+package com.willbe.paxclient.main
 
-import com.demo.pos.poslinkdemo.R
-import com.willbe.paxclient.adapters.MainPagerAdapter
+import com.willbe.paxclient.BaseActivity
+import com.willbe.paxclient.R
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity() {

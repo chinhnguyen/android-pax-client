@@ -1,6 +1,6 @@
 package com.willbe.paxclient.presenters.batch
 
-import com.willbe.paxclient.presenters.IBaseView
+import com.willbe.paxclient.IBaseView
 
 class BatchPresenterImpl(view: IBaseView) : IBatchPresenter.Presenter(view) {
 

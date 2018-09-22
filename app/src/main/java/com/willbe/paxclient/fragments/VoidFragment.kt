@@ -1,7 +1,8 @@
 package com.willbe.paxclient.fragments
 
-import com.demo.pos.poslinkdemo.R
-import com.willbe.paxclient.presenters.IBaseView
+import com.willbe.paxclient.BaseFragment
+import com.willbe.paxclient.R
+import com.willbe.paxclient.IBaseView
 import com.willbe.paxclient.presenters.sale.ISalePresenter
 import com.willbe.paxclient.presenters.sale.SalePresenterImpl
 import kotlinx.android.synthetic.main.fragment_void.*

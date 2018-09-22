@@ -1,11 +1,11 @@
 package com.willbe.paxclient.presenters.sale
 
-import com.willbe.paxclient.presenters.IBasePresenter
-import com.willbe.paxclient.presenters.IBaseView
+import com.willbe.paxclient.BasePresenter
+import com.willbe.paxclient.IBaseView
 
 interface ISalePresenter {
 
-    abstract class Presenter(view: IBaseView) : IBasePresenter<IBaseView>(view) {
+    abstract class Presenter(view: IBaseView) : BasePresenter<IBaseView>(view) {
 
         abstract fun callPaymentSale(amount: String)
 

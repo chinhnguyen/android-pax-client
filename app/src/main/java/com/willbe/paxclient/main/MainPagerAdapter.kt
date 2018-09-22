@@ -1,8 +1,9 @@
-package com.willbe.paxclient.adapters
+package com.willbe.paxclient.main
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
+import com.willbe.paxclient.config.ConfigFragment
 import com.willbe.paxclient.fragments.*
 
 class MainPagerAdapter(fm: FragmentManager?) : FragmentPagerAdapter(fm) {
