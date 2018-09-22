@@ -111,4 +111,17 @@ object CCService {
         manageRequest.TransType = manageRequest.ParseTransType("INIT")
         return send(device, manageRequest)
     }
+
+    /**
+     * Send SALE command to PAX.
+     */
+    fun sale(device: CCDevice, amount: Double): Observable<CCStatus> {
+        val paymentRequest = PaymentRequest()
+        paymentRequest.TenderType = paymentRequest.ParseTenderType(TENDER_TYPE_PAYMENT)
+        paymentRequest.TransType = paymentRequest.ParseTransType(TRAN_TYPE_PAYMENT_SALE)
+        paymentRequest.ECRRefNum = "1"
+        paymentRequest.Amount = (amount * 100).toInt().toString()
+        return send(device, paymentRequest)
+
+    }
 }

@@ -1,5 +1,6 @@
 package com.willbe.paxclient.config
 
+import android.util.Patterns
 import android.widget.EditText
 import com.jakewharton.rxbinding2.view.RxView
 import com.willbe.paxclient.R
@@ -32,6 +33,12 @@ class ConfigFragment : BaseFragment<ConfigPresenter, IBaseView>(), IBaseView {
                 .map { CCDevice(it) }
                 .subscribe(presenter.request)
 
+        Configuration.ipAddress
+                .map { Patterns.IP_ADDRESS.matcher(it).matches() }
+                .subscribe {
+                    testConnectionButton.isEnabled = it
+                }
+
         Observables
                 .combineLatest(
                         textChanges(ip1TextView),
@@ -49,6 +56,6 @@ class ConfigFragment : BaseFragment<ConfigPresenter, IBaseView>(), IBaseView {
     }
 
     private fun textChanges(textView: EditText): Observable<CharSequence> {
-        return RxTextView.textChanges(textView).filter { it.isNotBlank() }//.distinctUntilChanged()
+        return RxTextView.textChanges(textView)//.filter { it.isNotBlank() }//.distinctUntilChanged()
     }
 }

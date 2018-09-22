@@ -11,14 +11,14 @@
         android:text="@string/input_sale_amount" />
 
     <EditText
-        android:id="@+id/ed_sale_amount"
+        android:id="@+id/amountEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:imeOptions="actionDone"
         android:inputType="number" />
 
     <Button
-        android:id="@+id/bt_sale_submit"
+        android:id="@+id/submitButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
