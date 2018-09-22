@@ -1,6 +1,5 @@
 package com.willbe.paxclient
 
-import android.content.Context
 //import com.kizitonwose.android.disposebag.DisposeBag
 //import com.kizitonwose.android.disposebag.disposedWith
 import com.willbe.paxclient.services.CCDevice

@@ -7,33 +7,38 @@
     android:orientation="vertical"
     android:padding="@dimen/padding_default">
 
-    <TextView
+    <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/input_amount" />
+        android:layout_height="wrap_content">
 
-    <EditText
-        android:id="@+id/ed_force_amount"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:imeOptions="actionDone"
-        android:inputType="number" />
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/forceAmountEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Force amount"
+            android:imeOptions="actionDone"
+            android:inputType="numberDecimal"
+            android:nextFocusDown="@id/forceAuthCodeEditText"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_default"
-        android:text="@string/input_auth_code" />
+    </android.support.design.widget.TextInputLayout>
 
-    <EditText
-        android:id="@+id/ed_force_auth_code"
+    <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:imeOptions="actionDone"
-        android:inputType="number" />
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/forceAuthCodeEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Auth code"
+            android:imeOptions="actionDone"
+            android:inputType="text"/>
+
+    </android.support.design.widget.TextInputLayout>
+
 
     <Button
-        android:id="@+id/bt_force_submit"
+        android:id="@+id/forceButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

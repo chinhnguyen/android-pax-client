@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">POSLinkDemo</string>
+    <string name="app_name">PAX Client</string>
     <string name="submit">Submit</string>
     <string name="input_pax_s_ip_address">Input Pax\'s IP address</string>
     <string name="test_connection">Test Connection</string>
@@ -12,8 +12,9 @@
     <string name="input_orig_ref_number">Input orig ref number</string>
     <string name="input_auth_code">Input auth code</string>
     <string name="submit_void">Void</string>
+    <string name="sale">Sale</string>
     <string name="refund">Refund</string>
     <string name="adjust">Adjust</string>
-    <string name="force">Force Auth</string>
+    <string name="force">Force</string>
     <string name="close_batch">Close Batch</string>
 </resources>

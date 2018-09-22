@@ -16,6 +16,10 @@ object CCService {
     private const val TRAN_TYPE_PAYMENT_ADJUST = "ADJUST"
     private const val TRAN_TYPE_BATCH_CLOSE = "BATCHCLOSE"
 
+    private const val EDC_TYPE_CREADIT = "CREDIT"
+    private const val TENDER_TYPE_PAYMENT = "CREDIT"
+
+
     private const val COM_SETTING_HOST = "UNKNOWN"
     private const val COM_SETTING_SERIAL_PORT = "COM1"
     private const val COM_SETTING_TYPE = "TCP"
@@ -108,7 +112,7 @@ object CCService {
      */
     fun testConnection(device: CCDevice): Observable<CCStatus> {
         val manageRequest = ManageRequest()
-        manageRequest.TransType = manageRequest.ParseTransType("INIT")
+        manageRequest.TransType = manageRequest.ParseTransType(TRAN_TYPE_MANAGE_INIT)
         return send(device, manageRequest)
     }
 
@@ -122,6 +126,65 @@ object CCService {
         paymentRequest.ECRRefNum = "1"
         paymentRequest.Amount = (amount * 100).toInt().toString()
         return send(device, paymentRequest)
+    }
 
+    /**
+     * Send VOID command to PAX.
+     */
+    fun void(device: CCDevice, origRefNum: String): Observable<CCStatus> {
+        val paymentRequest = PaymentRequest()
+        paymentRequest.TenderType = paymentRequest.ParseTenderType(TENDER_TYPE_PAYMENT)
+        paymentRequest.TransType = paymentRequest.ParseTransType(TRAN_TYPE_PAYMENT_VOID)
+        paymentRequest.ECRRefNum = "1"
+        paymentRequest.OrigRefNum = origRefNum
+        return send(device, paymentRequest)
+    }
+
+    /**
+     * Send ADJUST command to PAX.
+     */
+    fun adjust(device: CCDevice, tipAmount: Double, origRefNum: String): Observable<CCStatus> {
+        val paymentRequest = PaymentRequest()
+        paymentRequest.TenderType = paymentRequest.ParseTenderType(TENDER_TYPE_PAYMENT)
+        paymentRequest.TransType = paymentRequest.ParseTransType(TRAN_TYPE_PAYMENT_ADJUST)
+        paymentRequest.ECRRefNum = "1"
+        paymentRequest.Amount = (tipAmount * 100).toInt().toString()
+        paymentRequest.OrigRefNum = origRefNum
+        return send(device, paymentRequest)
+    }
+
+    /**
+     * Send RETURN command to PAX.
+     */
+    fun refund(device: CCDevice, amount: Double): Observable<CCStatus> {
+        val paymentRequest = PaymentRequest()
+        paymentRequest.TenderType = paymentRequest.ParseTenderType(TENDER_TYPE_PAYMENT)
+        paymentRequest.TransType = paymentRequest.ParseTransType(TRAN_TYPE_PAYMENT_REFUND)
+        paymentRequest.ECRRefNum = "1"
+        paymentRequest.Amount = (amount * 100).toInt().toString()
+        return send(device, paymentRequest)
+    }
+
+    /**
+     * Send FORCEAUTH command to PAX.
+     */
+    fun force(device: CCDevice, amount: Double, authCode: String): Observable<CCStatus> {
+        val paymentRequest = PaymentRequest()
+        paymentRequest.TenderType = paymentRequest.ParseTenderType(TENDER_TYPE_PAYMENT)
+        paymentRequest.TransType = paymentRequest.ParseTransType(TRAN_TYPE_PAYMENT_FORCEAUTH)
+        paymentRequest.ECRRefNum = "1"
+        paymentRequest.Amount = (amount * 100).toInt().toString()
+        paymentRequest.AuthCode = authCode
+        return send(device, paymentRequest)
+    }
+
+    /**
+     * Send CLOSEBATCH command to PAX.
+     */
+    fun closeBatch(device: CCDevice): Observable<CCStatus> {
+        val batchRequest = BatchRequest()
+        batchRequest.TransType = batchRequest.ParseTransType(TRAN_TYPE_BATCH_CLOSE)
+        batchRequest.EDCType = batchRequest.ParseEDCType(EDC_TYPE_CREADIT)
+        return send(device, batchRequest)
     }
 }

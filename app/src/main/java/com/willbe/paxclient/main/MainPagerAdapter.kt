@@ -3,9 +3,13 @@ package com.willbe.paxclient.main
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
+import com.willbe.paxclient.adjust.AdjustFragment
+import com.willbe.paxclient.batch.CloseBatchFragment
 import com.willbe.paxclient.config.ConfigFragment
-import com.willbe.paxclient.fragments.*
+import com.willbe.paxclient.force.ForceFragment
+import com.willbe.paxclient.refund.RefundFragment
 import com.willbe.paxclient.sale.SaleFragment
+import com.willbe.paxclient.voidt.VoidFragment
 
 class MainPagerAdapter(fm: FragmentManager?) : FragmentPagerAdapter(fm) {
 

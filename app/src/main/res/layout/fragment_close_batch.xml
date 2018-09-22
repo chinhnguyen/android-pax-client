@@ -6,7 +6,7 @@
     android:padding="@dimen/padding_default">
 
     <Button
-        android:id="@+id/bt_close_batch"
+        android:id="@+id/closeBatchButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

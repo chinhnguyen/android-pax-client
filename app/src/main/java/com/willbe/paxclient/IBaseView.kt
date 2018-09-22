@@ -1,6 +1,5 @@
 package com.willbe.paxclient
 
-import android.content.Context
 import com.willbe.paxclient.services.CCResult
 
 /**

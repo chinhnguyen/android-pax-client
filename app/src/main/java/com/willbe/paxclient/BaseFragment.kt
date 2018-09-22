@@ -1,25 +1,30 @@
 package com.willbe.paxclient
 
 import android.app.AlertDialog
-import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
-import com.willbe.paxclient.dialogs.ProcessProgressDialog
 import com.willbe.paxclient.services.CCResult
+import io.reactivex.disposables.CompositeDisposable
 
 abstract class BaseFragment<P, V> : Fragment(), IBaseView where V : IBaseView, P : BasePresenter<V> {
 
     lateinit var presenter: P
     private var progressDialog: AlertDialog? = null
 
+    var disposable = CompositeDisposable()
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         presenter = initPresenter()
         return inflater.inflate(getLayoutResourceId(), container, false)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        disposable.clear()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -38,9 +43,7 @@ abstract class BaseFragment<P, V> : Fragment(), IBaseView where V : IBaseView, P
         builder.setCancelable(false)
         builder.setView(R.layout.dialog_sending)
         progressDialog = builder.create()
-        progressDialog?.let {
-            it.show()
-        }
+        progressDialog?.show()
     }
 
     override fun hideLoading() {

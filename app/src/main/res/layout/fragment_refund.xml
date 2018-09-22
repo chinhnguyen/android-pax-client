@@ -7,20 +7,24 @@
     android:orientation="vertical"
     android:padding="@dimen/padding_default">
 
-    <TextView
+    <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/input_refund_amount" />
+        android:layout_height="wrap_content">
 
-    <EditText
-        android:id="@+id/ed_refund_amount"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:imeOptions="actionDone"
-        android:inputType="number" />
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/refundAmountEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Refund amount"
+            android:imeOptions="actionDone"
+            android:inputType="numberDecimal"
+            android:nextFocusDown="@id/tipRefNumEditText"/>
+
+    </android.support.design.widget.TextInputLayout>
+
 
     <Button
-        android:id="@+id/bt_refund_submit"
+        android:id="@+id/refundButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
