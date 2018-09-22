@@ -5,15 +5,11 @@ import com.demo.pos.poslinkdemo.presenters.IBaseView
 
 class IManagePresenter {
 
-    interface IManageBaseView : IBaseView {
-        fun manageInitSuccess()
-    }
-
-    abstract class Presenter(view: IManageBaseView) : IBasePresenter<IManageBaseView>(view) {
+    abstract class Presenter(view: IBaseView) : IBasePresenter<IBaseView>(view) {
 
         /**
-         * Temporary use Manage Init request to test connection
+         * Call MANAGE INIT to test for connection
          */
-        abstract fun callManageInitRequest()
+        abstract fun testConnection()
     }
 }

@@ -18,7 +18,7 @@
         android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/et_config_ip_1"
+            android:id="@+id/ip1TextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="12dp"
@@ -26,11 +26,11 @@
             android:imeOptions="actionNext"
             android:inputType="number"
             android:maxLength="3"
-            android:nextFocusRight="@id/et_config_ip_2"
+            android:nextFocusRight="@id/ip2TextView"
             android:textAlignment="center" />
 
         <EditText
-            android:id="@+id/et_config_ip_2"
+            android:id="@+id/ip2TextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="12dp"
@@ -38,11 +38,11 @@
             android:imeOptions="actionNext"
             android:inputType="number"
             android:maxLength="3"
-            android:nextFocusRight="@id/et_config_ip_3"
+            android:nextFocusRight="@id/ip3TextView"
             android:textAlignment="center" />
 
         <EditText
-            android:id="@+id/et_config_ip_3"
+            android:id="@+id/ip3TextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="12dp"
@@ -50,11 +50,11 @@
             android:imeOptions="actionNext"
             android:inputType="number"
             android:maxLength="3"
-            android:nextFocusRight="@id/et_config_ip_4"
+            android:nextFocusRight="@id/ip4TextView"
             android:textAlignment="center" />
 
         <EditText
-            android:id="@+id/et_config_ip_4"
+            android:id="@+id/ip4TextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="12dp"
@@ -67,7 +67,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/bt_test_connection"
+        android:id="@+id/testConnectionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

@@ -28,24 +28,17 @@ object PosLinkConfiguration {
 
     lateinit var ipAddress: String
 
-    fun createComSetting(ipAddress: String): CommSetting {
-        val comSetting = CommSetting()
-        comSetting.timeOut = COM_SETTING_TIME_OUT
-        comSetting.type = COM_SETTING_TYPE
-        comSetting.serialPort = COM_SETTING_SERIAL_PORT
-        comSetting.baudRate = COM_SETTING_BAUD_RATE
-        comSetting.destIP = ipAddress
-        comSetting.destPort = COM_SETTING_DEST_PORT
-        comSetting.host = COM_SETTING_HOST
-        comSetting.isEnableProxy = true
-        return comSetting
-    }
-
-    fun createComSetting(): CommSetting {
-        return createComSetting(ipAddress)
-    }
-
-    fun getAddDataFolder() {
-
-    }
+    val commSetting: CommSetting
+        get() {
+            val comSetting = CommSetting()
+            comSetting.timeOut = COM_SETTING_TIME_OUT
+            comSetting.type = COM_SETTING_TYPE
+            comSetting.serialPort = COM_SETTING_SERIAL_PORT
+            comSetting.baudRate = COM_SETTING_BAUD_RATE
+            comSetting.destIP = ipAddress
+            comSetting.destPort = COM_SETTING_DEST_PORT
+            comSetting.host = COM_SETTING_HOST
+            comSetting.isEnableProxy = true
+            return comSetting
+        }
 }

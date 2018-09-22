@@ -7,36 +7,25 @@ import com.demo.pos.poslinkdemo.fragments.*
 
 class MainPagerAdapter(fm: FragmentManager?) : FragmentPagerAdapter(fm) {
 
-    private val NUM_OF_PAGES = 7
+    private val tabs: List<Pair<String, Fragment>> = listOf<Pair<String, Fragment>>(
+            Pair("Config", ConfigFragment()),
+            Pair("Sale", SaleFragment()),
+            Pair("Void", VoidFragment()),
+            Pair("Adjust", AdjustFragment()),
+            Pair("Refund", RefundFragment()),
+            Pair("Force", ForceFragment()),
+            Pair("Close Batch", CloseBatchFragment())
+    )
 
     override fun getItem(position: Int): Fragment {
-        when (position) {
-            0 -> return ConfigFragment()
-            1 -> return SaleFragment()
-            2 -> return VoidFragment()
-            3 -> return AdjustFragment()
-            4 -> return RefundFragment()
-            5 -> return ForceFragment()
-            6 -> return CloseBatchFragment()
-        }
-        return SaleFragment()
+        return tabs[position].second
     }
 
     override fun getPageTitle(position: Int): CharSequence? {
-        when (position) {
-            0 -> return "Config"
-            1 -> return "Sale"
-            2 -> return "Void"
-            3 -> return "Adjust"
-            4 -> return "Refund"
-            5 -> return "Force"
-            6 -> return "Close Batch"
-        }
-        return super.getPageTitle(position)
+        return tabs[position].first
     }
 
     override fun getCount(): Int {
-        return NUM_OF_PAGES
+        return tabs.count()
     }
-
 }

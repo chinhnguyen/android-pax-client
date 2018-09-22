@@ -8,57 +8,42 @@ import com.pax.poslink.poslink.POSLinkCreator
 import io.reactivex.Observable
 
 abstract class IBasePresenter<V>(protected var view: V) where V : IBaseView {
-
-    protected fun createPosLinkObject(): PosLink {
-        val posLink = POSLinkCreator.createPoslink(getContext())
-        posLink.appDataFolder = getAppDataFolder()
-        posLink.SetCommSetting(PosLinkConfiguration.createComSetting())
-        return posLink
-    }
-
-    protected fun createPosLinkObservable(): Observable<PosLink> {
-        return Observable.create<PosLink> {
-            it.onNext(createPosLinkObject())
-            it.onComplete()
-        }
-    }
+    /**
+     * Return the context of View.
+     */
+    val context: Context?
+        get() = view.getViewContext()
 
     /**
-     * Execute the posLink request and return result set in an observable
+     * Return the post link object (return new one on each call) for calling pax.
      */
-    protected fun executePosLink(posLink: PosLink): ProcessTransResult {
-        return posLink.ProcessTrans()
-    }
-
-    /**
-     * Execute the postLink response object to indicate the request was success or error.
-     *
-     * The return Observable should take an object instead of String.
-     */
-    protected fun executeTransResult(result: ProcessTransResult): Observable<String> {
-        return Observable.create<String> {
-            when (result.Code) {
-                ProcessTransResult.ProcessTransResultCode.OK -> {
-                    it.onNext("Request success")
-                }
-                ProcessTransResult.ProcessTransResultCode.TimeOut -> {
-                    val exception = RuntimeException("Timed out")
-                    it.onError(exception)
-                }
-                ProcessTransResult.ProcessTransResultCode.ERROR -> {
-                    val exception = RuntimeException(result.Msg)
-                    it.onError(exception)
-                }
-            }
+    val posLink: PosLink
+        get() {
+            val posLink = POSLinkCreator.createPoslink(context)
+            posLink.appDataFolder = context?.applicationContext?.filesDir?.absolutePath
+            posLink.SetCommSetting(PosLinkConfiguration.commSetting)
+            return posLink
         }
-    }
-
-    private fun getAppDataFolder(): String? {
-        return getContext()?.applicationContext?.filesDir?.absolutePath
-    }
-
-    private fun getContext(): Context? {
-        return view.getViewContext()
-    }
-
+//    /**
+//     * Execute the postLink response object to indicate the request was success or error.
+//     *
+//     * The return Observable should take an object instead of String.
+//     */
+//    protected fun executeTransResult(result: ProcessTransResult): Observable<String> {
+//        return Observable.create<String> {
+//            when (result.Code) {
+//                ProcessTransResult.ProcessTransResultCode.OK -> {
+//                    it.onNext("Request success")
+//                }
+//                ProcessTransResult.ProcessTransResultCode.TimeOut -> {
+//                    val exception = RuntimeException("Timed out")
+//                    it.onError(exception)
+//                }
+//                ProcessTransResult.ProcessTransResultCode.ERROR -> {
+//                    val exception = RuntimeException(result.Msg)
+//                    it.onError(exception)
+//                }
+//            }
+//        }
+//    }
 }

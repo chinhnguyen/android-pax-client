@@ -10,12 +10,10 @@ abstract class BaseActivity : FragmentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(getLayoutResourceId())
-        Log.d("BaseActivity", "Activity created")
         initView()
     }
 
     abstract fun getLayoutResourceId(): Int
 
     abstract fun initView()
-
 }

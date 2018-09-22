@@ -8,15 +8,24 @@ import kotlinx.android.synthetic.main.fragment_configuration.*
 
 class ConfigFragment : BaseFragment<IManagePresenter.Presenter, IManagePresenter.IManageBaseView>(), IManagePresenter.IManageBaseView {
 
+    /**
+     * Return the IP address from the 4 text fields.
+     */
+    val ipAddress: String
+        get() {
+            return arrayOf(ip1TextView.text, ip2TextView.text, ip3TextView.text, ip4TextView.text).joinToString { "." }
+        }
+
+
     override fun initPresenter(): IManagePresenter.Presenter {
         return ManagePresenterImpl(this)
     }
 
     override fun setupViews() {
-        bt_test_connection.setOnClickListener({
-            PosLinkConfiguration.ipAddress = getIpAddressFromEditText()
+        testConnectionButton.setOnClickListener {
+            PosLinkConfiguration.ipAddress = ipAddress
             presenter.callManageInitRequest()
-        })
+        }
     }
 
     override fun getLayoutResourceId(): Int {
@@ -25,13 +34,6 @@ class ConfigFragment : BaseFragment<IManagePresenter.Presenter, IManagePresenter
 
     override fun manageInitSuccess() {
         showToastMessage("Connect success")
-    }
-
-    private fun getIpAddressFromEditText(): String {
-        return et_config_ip_1.text.toString() + "." +
-                et_config_ip_2.text.toString() + "." +
-                et_config_ip_3.text.toString() + "." +
-                et_config_ip_4.text.toString()
     }
 
 }

@@ -7,22 +7,23 @@ import com.pax.poslink.PosLink
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.functions.BiFunction
 import io.reactivex.schedulers.Schedulers
+import com.demo.pos.poslinkdemo.presenters.IBaseView
 
-class ManagePresenterImpl(view: IManagePresenter.IManageBaseView) : IManagePresenter.Presenter(view) {
+class ManagePresenterImpl(view: IBaseView) : IManagePresenter.Presenter(view) {
 
-    override fun callManageInitRequest() {
-        val disposable = ManageTask.createManageRequestObservable(PosLinkConfiguration.TRAN_TYPE_MANAGE_INIT)
-                .zipWith(createPosLinkObservable(), BiFunction { manageRequest: ManageRequest, posLink: PosLink ->
-                    posLink.ManageRequest = manageRequest
-                    executePosLink(posLink)
-                }).flatMap { executeTransResult(it) }
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({
-                    view.manageInitSuccess()
-                }, {
-                    view.onError(it.message)
-                })
+    override fun testConnection() {
+//        val disposable = ManageTask.createManageRequestObservable(PosLinkConfiguration.TRAN_TYPE_MANAGE_INIT)
+//                .zipWith(createPosLinkObservable(), BiFunction { manageRequest: ManageRequest, posLink: PosLink ->
+//                    posLink.ManageRequest = manageRequest
+//                    executePosLink(posLink)
+//                }).flatMap { executeTransResult(it) }
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe({
+//                    view.manageInitSuccess()
+//                }, {
+//                    view.onError(it.message)
+//                })
     }
 
 }

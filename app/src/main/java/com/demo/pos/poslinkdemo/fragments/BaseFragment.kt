@@ -14,10 +14,6 @@ abstract class BaseFragment<P, V> : Fragment(), IBaseView where V : IBaseView, P
 
     lateinit var presenter: P
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         presenter = initPresenter()
         return inflater.inflate(getLayoutResourceId(), container, false)
@@ -34,13 +30,9 @@ abstract class BaseFragment<P, V> : Fragment(), IBaseView where V : IBaseView, P
 
     abstract fun setupViews()
 
-    override fun showLoading() {
+    override fun showLoading() { }
 
-    }
-
-    override fun hideLoading() {
-
-    }
+    override fun hideLoading() { }
 
     override fun onError(message: String?) {
         showToastMessage(message)
@@ -53,6 +45,4 @@ abstract class BaseFragment<P, V> : Fragment(), IBaseView where V : IBaseView, P
     protected fun showToastMessage(message: String?) {
         Toast.makeText(context, message, Toast.LENGTH_LONG).show()
     }
-
-
 }

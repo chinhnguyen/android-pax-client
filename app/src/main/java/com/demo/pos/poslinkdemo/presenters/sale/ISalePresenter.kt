@@ -6,7 +6,6 @@ import com.demo.pos.poslinkdemo.presenters.IBaseView
 interface ISalePresenter {
 
     interface ISaleView : IBaseView {
-
         fun onSaleSuccess()
     }
 
@@ -21,6 +20,5 @@ interface ISalePresenter {
         abstract fun callPaymentRefund(amount: String)
 
         abstract fun callPaymentForce(amount: String, authCode: String)
-
     }
 }
