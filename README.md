@@ -1,9 +1,18 @@
-# PAX Client 
+# Demonstration on common operations working with PAX Credit Card Payment Termincal
 
-Steps to run:
+Sample for calling PAX with most common operations for a POS system includes:
+1. Sales
+1. Force
+1. Refund
+1. Void
+1. Adjust Tips
+1. Close Batch
 
-1. Open app
 
-2. On Config screen input the PAX IP address
+All operations return **Observable** which can be subscribed to perform corresponding actions.
 
-3. Move on to other tab to test 
+![ ](https://media.giphy.com/media/paQxRVfmyXfAzzCmU0/giphy.gif)
+
+  
+
+
