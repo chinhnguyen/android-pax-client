@@ -1,4 +1,4 @@
-# Demonstration on common operations working with PAX Credit Card Payment Termincal
+# Demonstration on common operations working with PAX Credit Card Payment Terminal
 
 Sample for calling PAX with most common operations for a POS system includes:
 1. Sales
